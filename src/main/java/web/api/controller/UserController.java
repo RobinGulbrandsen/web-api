@@ -1,7 +1,11 @@
 package web.api.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -13,10 +17,12 @@ public class UserController {
 
 	@GET
 	@Produces("application/json")
-	public ArrayList<User> getUsers() {
-		ArrayList<User> users = new ArrayList<User>();
-		users.add(new User("Scott", "Tiger"));
-		users.add(new User("Robin", "1234"));
-		return users;
+	public List<User> getUsers() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pUnit");
+        EntityManager em = emf.createEntityManager();
+        
+        Query q = em.createQuery("SELECT u FROM User u", User.class);
+        return q.getResultList();
+        
 	}
 }

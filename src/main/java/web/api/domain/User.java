@@ -1,9 +1,14 @@
 package web.api.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@Entity
 @XmlRootElement
+@Table(name = "users")
 public class User {
 
 	private String username;
@@ -25,7 +30,8 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	
+	@Id
 	@XmlElement
 	public String getUsername() {
 		return username;

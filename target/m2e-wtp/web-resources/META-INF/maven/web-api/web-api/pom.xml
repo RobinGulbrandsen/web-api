@@ -6,6 +6,16 @@
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>web-api Jersey Webapp</name>
+    
+    <properties>
+        <jersey-version>1.8</jersey-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+	    <hibernate-core.version>3.6.4.Final</hibernate-core.version>
+	    <mysql-connector-java.version>5.1.16</mysql-connector-java.version>
+	</properties>
+    
+    
     <build>
         <finalName>web-api</finalName>
         <plugins>
@@ -25,6 +35,26 @@
         </plugins>
     </build>
     <dependencies>
+    	<!-- HIBERNATE DEPENDENCIES -->
+	    <dependency>
+	        <groupId>org.hibernate</groupId>
+	        <artifactId>hibernate-core</artifactId>
+	        <version>${hibernate-core.version}</version>
+	    </dependency>
+	    <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-core.version}</version>
+		</dependency>
+	
+	    <!-- MYSQL DEPENDENCIES -->
+	    <dependency>
+	        <groupId>mysql</groupId>
+	        <artifactId>mysql-connector-java</artifactId>
+	        <version>${mysql-connector-java.version}</version>
+	    </dependency>
+    
+    	<!-- JAX-RS DEPENDENCIES -->
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-server</artifactId>
@@ -60,9 +90,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <properties>
-        <jersey-version>1.8</jersey-version>
-    </properties>
     <repositories>
         <repository>
             <id>glassfish.java.net</id>
